@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="description" content="Interaktive Einladung zur Geburtstags-Nachfeier am 19. Juni 2027 in Thusis.">
+<title>50.5 Jahre · Nachfeier in Thusis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0d0d; --bg2:#11110f; --card:#191816; --field:#171613;
+  --gold:#c9a45c; --gold2:#d8bc7a; --text:#f1ede4; --muted:#aaa59c;
+  --line:#514a3d; --max:1100px; --content:720px; --nav-h:72px;
+  --serif:"Cormorant Garamond", Georgia, serif; --sans:Inter, system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit}
+button,a{ -webkit-tap-highlight-color:transparent }
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:4px}
+
+/* Global navigation */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:center;background:rgba(13,13,13,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,164,92,.13);transform:translateY(-100%);transition:transform .45s ease}
+.site-nav.visible{transform:translateY(0)}
+.nav-inner{width:min(var(--max),100%);padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-family:var(--serif);font-size:25px;color:var(--gold2);text-decoration:none;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-link{border:0;background:transparent;color:#8d887e;padding:10px 12px;border-radius:999px;cursor:pointer;font-size:12px;letter-spacing:.12em;text-transform:uppercase;transition:color .25s,background .25s}
+.nav-link:hover{color:var(--text)}
+.nav-link.active{color:var(--gold2);background:rgba(201,164,92,.09)}
+
+/* Mobile bottom nav */
+.mobile-nav{display:none;position:fixed;z-index:110;left:0;right:0;bottom:0;height:calc(64px + env(safe-area-inset-bottom));padding:0 10px env(safe-area-inset-bottom);background:rgba(13,13,13,.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid rgba(201,164,92,.16)}
+.mobile-nav .mobile-nav-inner{height:64px;display:grid;grid-template-columns:repeat(4,1fr);align-items:center}
+.mobile-link{border:0;background:transparent;color:#777269;font-size:10px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;display:flex;flex-direction:column;gap:3px;align-items:center;justify-content:center;height:100%}
+.mobile-link .icon{font-size:17px;line-height:1}
+.mobile-link.active{color:var(--gold2)}
+.mobile-link.active::after{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);margin-top:1px}
+
+/* Shared */
+.section{position:relative;max-width:var(--max);margin:0 auto;padding:110px 28px}
+.section-inner{max-width:var(--content);margin:0 auto}
+.eyebrow{display:inline-block;margin-bottom:14px;color:var(--gold);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:.98;margin:0;color:var(--gold2)}
+h2{font-size:clamp(42px,6vw,64px);margin-bottom:24px}
+h3{font-size:26px;color:var(--text)}
+p{margin:0 0 18px}.lead{font-size:18px;line-height:1.7;color:var(--muted)}
+.gold{color:var(--gold2)}
+.rule{width:64px;height:1px;background:var(--gold);opacity:.7;margin:28px 0}
+.section-photo{width:100%;border-radius:20px;display:block;object-fit:cover;box-shadow:0 18px 60px rgba(0,0,0,.28)}
+
+/* Hero */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden;background:#0d0d0d}
+.hero-media{position:absolute;inset:0;background-image:linear-gradient(to bottom,rgba(13,13,13,.10) 0%,rgba(13,13,13,.05) 38%,rgba(13,13,13,.78) 74%,rgba(13,13,13,.98) 100%),url('assets/hero.jpg');background-size:cover;background-position:center 34%;transform:scale(1.025);animation:heroZoom 10s ease-out both}
+.hero::after{content:"";position:absolute;inset:18px;border:1px solid rgba(216,188,122,.7);pointer-events:none;z-index:1}
+.hero-content{position:relative;z-index:2;width:min(92%,680px);text-align:center;padding:120px 20px 70px;animation:fadeUp .9s .2s both}
+.hero-eyebrow{font-size:13px;letter-spacing:.28em;color:var(--gold2);font-weight:500;text-transform:uppercase}
+.hero-title{font-size:clamp(64px,15vw,110px);margin:18px 0 4px;text-shadow:0 8px 32px rgba(0,0,0,.45)}
+.hero-sub{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--text);margin:0}
+.hero-date{font-family:var(--serif);font-size:27px;color:var(--gold2);margin-top:14px}
+.hero-cta{margin-top:30px}
+.scroll-hint{position:absolute;z-index:2;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(241,237,228,.82);font-size:10px;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px;animation:bob 2.2s ease-in-out infinite}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:0 26px;border:0;border-radius:28px;background:var(--gold);color:#0d0d0d;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.03em;cursor:pointer;transition:transform .18s,background .25s,box-shadow .25s}
+.btn:hover{background:var(--gold2);box-shadow:0 10px 28px rgba(201,164,92,.14)}
+.btn:active{transform:scale(.97)}
+.text-link{display:inline-flex;align-items:center;gap:7px;color:var(--gold2);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+
+/* Start */
+.intro{text-align:left}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:46px}
+.info-card,.feature-card,.stay-card,.food-card,.arrival-card{background:var(--card);border:1px solid rgba(201,164,92,.2);border-radius:16px;padding:22px;transition:transform .3s,border-color .3s,background .3s}
+.info-card:hover,.feature-card:hover,.stay-card:hover,.food-card:hover,.arrival-card:hover{transform:translateY(-3px);border-color:rgba(201,164,92,.5)}
+.card-kicker{font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:7px}
+.card-title{font-family:var(--serif);font-size:24px;color:var(--text);line-height:1.05;margin-bottom:4px}
+.card-copy{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+.closing{padding-top:140px;text-align:center}
+.closing h2{max-width:700px;margin:0 auto 28px}
+.closing p{max-width:600px;margin:0 auto 30px;color:var(--muted)}
+
+/* Location */
+.location-hero-photo{height:58svh;min-height:420px;border-radius:22px;object-fit:cover;object-position:center 44%;filter:saturate(.9)}
+.photo-caption{margin-top:10px;color:#7e786e;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
+.feature-icon{font-size:25px;margin-bottom:13px}.feature-card h3{font-size:23px;margin-bottom:8px}.feature-card p{color:var(--muted);font-size:14px;line-height:1.55}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+.arrival-card{min-height:170px}.arrival-icon{font-size:27px;margin-bottom:12px}.arrival-card h3{margin-bottom:8px}.arrival-card p{color:var(--muted);font-size:14px}.route{margin-top:4px}
+.stay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
+.stay-card{min-height:175px}.stay-card h3{font-size:23px;margin-bottom:7px}.stay-card p{color:var(--muted);font-size:14px}
+.notice{margin-top:16px;padding:23px;border-radius:16px;background:#171613;border:1px solid rgba(201,164,92,.55)}
+.notice-title{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--gold2);text-transform:uppercase;margin-bottom:8px}.notice p{font-size:14px;color:var(--muted);margin:0}
+
+/* Programme */
+.programme-intro{text-align:center;max-width:680px;margin:0 auto 55px}
+.timeline{position:relative;max-width:760px;margin:0 auto;padding-left:42px}
+.timeline::before{content:"";position:absolute;left:9px;top:5px;bottom:5px;width:1px;background:linear-gradient(var(--gold),rgba(201,164,92,.18))}
+.event{position:relative;margin:0 0 36px;padding:0}
+.event:last-child{margin-bottom:0}
+.event::before{content:"";position:absolute;left:-38px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(201,164,92,.08)}
+.event-label{color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;margin-bottom:7px}
+.event h3{font-size:28px;margin-bottom:7px}.event p{color:var(--muted);font-size:15px;max-width:590px}
+.mystery{background:var(--card);border:1px solid rgba(201,164,92,.45);border-radius:16px;padding:23px;margin-top:14px}
+.mystery strong{display:block;font-family:var(--serif);font-size:23px;color:var(--text);margin-bottom:5px}.mystery span{color:var(--muted);font-size:14px}
+.party{margin:72px auto 70px;max-width:900px;min-height:520px;border-radius:22px;overflow:hidden;position:relative;display:flex;align-items:flex-end;background:linear-gradient(to bottom,rgba(13,13,13,.1),rgba(13,13,13,.92)),url('assets/hero.jpg') center 70%/cover no-repeat}
+.party-copy{padding:50px 36px 40px;width:100%}.party h2{font-size:clamp(44px,7vw,72px);margin-bottom:10px}.party-tag{font-family:var(--serif);font-size:24px;color:var(--gold2);margin-bottom:24px}
+.party-pills{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:600px}.pill{padding:12px;border:1px solid rgba(216,188,122,.28);border-radius:12px;background:rgba(13,13,13,.28);text-align:center;font-size:13px;color:var(--text)}
+.open-end{margin:0 auto 80px;max-width:620px;text-align:center}.open-end h2{font-size:46px}.open-end p{color:var(--muted)}
+.sunday-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+
+/* RSVP */
+.rsvp-shell{max-width:760px;margin:0 auto}
+.rsvp-intro{text-align:center;margin-bottom:34px}.rsvp-intro p{color:var(--muted)}
+.progress{display:flex;align-items:center;gap:12px;margin:0 auto 28px;max-width:650px}.progress-label{white-space:nowrap;color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.progress-track{height:2px;flex:1;background:#39342c;overflow:hidden}.progress-fill{height:100%;width:25%;background:var(--gold);transition:width .35s ease}
+.form-step{display:none;animation:stepIn .35s ease both}.form-step.active{display:block}
+.step-title{font-family:var(--serif);font-size:34px;color:var(--text);margin-bottom:20px}.field{margin:0 0 24px}.field-label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:9px}.field-label small{color:var(--muted);font-weight:400}
+.text-input,.select-input,.textarea{width:100%;min-height:52px;border:1px solid #4c463b;border-radius:12px;background:var(--field);color:var(--text);padding:14px 15px;outline:none;transition:border-color .2s,box-shadow .2s}.textarea{min-height:120px;resize:vertical}.text-input::placeholder,.textarea::placeholder{color:#716c63}.text-input:focus,.select-input:focus,.textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,164,92,.08)}
+.option-grid{display:grid;gap:10px}.option-grid.two{grid-template-columns:1fr 1fr}.option{position:relative;display:block;cursor:pointer}.option input{position:absolute;opacity:0;pointer-events:none}.option-body{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding:15px 16px;border:1px solid #4c463b;border-radius:14px;background:var(--card);transition:border-color .2s,background .2s,transform .15s}.option-body:active{transform:scale(.985)}.option-main{display:flex;align-items:center;gap:12px}.option-icon{font-size:21px}.option-title{font-family:var(--serif);font-size:20px;color:var(--text);line-height:1.05}.option-sub{font-size:12px;color:var(--muted);margin-top:3px}.check{width:20px;height:20px;border-radius:50%;border:1px solid #625b50;display:grid;place-items:center;color:#0d0d0d;font-size:12px;flex:none}.option input:checked + .option-body{border-color:var(--gold);background:rgba(201,164,92,.08)}.option input:checked + .option-body .check{background:var(--gold);border-color:var(--gold)}
+.inline-choice{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.inline-choice .option-body{justify-content:center;text-align:center;min-height:56px}.conditional{display:none;margin-top:16px;animation:fadeUp .3s ease both}.conditional.show{display:block}
+.notice.compact{margin-top:0}.step-actions{display:flex;justify-content:space-between;gap:10px;margin-top:30px}.btn-secondary{min-height:54px;border:1px solid #4c463b;background:transparent;color:var(--text);padding:0 22px;border-radius:28px;cursor:pointer;font-size:13px}.btn-secondary:hover{border-color:var(--gold);color:var(--gold2)}
+.summary{display:grid;gap:10px}.summary-row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid rgba(201,164,92,.12)}.summary-row:last-child{border-bottom:0}.summary-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}.summary-value{text-align:right;color:var(--text);font-size:14px}
+.success-state{display:none;text-align:center;padding:35px 0 15px}.success-state.show{display:block;animation:fadeUp .6s ease both}.success-icon{font-size:54px;margin-bottom:14px}.success-state h2{font-size:48px}.success-state p{max-width:520px;margin:0 auto 24px;color:var(--muted)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+
+/* Footer */
+footer{padding:80px 28px calc(100px + env(safe-area-inset-bottom));text-align:center;color:#706b63;font-size:12px;letter-spacing:.08em}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes stepIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes heroZoom{from{transform:scale(1.05)}to{transform:scale(1.025)}}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+.submit-status{margin:0 0 16px;padding:13px 15px;border-radius:12px;font-size:13px;line-height:1.5;border:1px solid rgba(201,164,92,.25);background:#171613;color:var(--muted)}
+.submit-status.error{border-color:rgba(190,100,80,.55);color:#e9c4b8;background:rgba(120,55,45,.12)}
+.submit-status.info{border-color:rgba(201,164,92,.35);color:var(--gold2)}
+.btn:disabled{opacity:.65;cursor:wait;box-shadow:none;transform:none}
+
+@media (max-width:800px){
+  :root{--nav-h:62px}
+  .site-nav{display:none}.mobile-nav{display:block}
+  .section{padding:86px 20px}.section-inner{max-width:100%}
+  .hero::after{inset:12px}.hero-content{padding-bottom:90px}.hero-media{background-position:center 30%}
+  .info-grid,.feature-grid,.stay-grid,.sunday-grid{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .location-hero-photo{height:56svh;min-height:360px}
+  .party{min-height:540px;margin-left:-20px;margin-right:-20px;border-radius:0;background-position:center 62%}.party-copy{padding:44px 20px 38px}.party-pills{grid-template-columns:1fr 1fr}
+  .timeline{padding-left:34px}.timeline::before{left:7px}.event::before{left:-33px}
+  .inline-choice{grid-template-columns:1fr}
+  .option-grid.two{grid-template-columns:1fr}
+  .step-actions{position:sticky;bottom:calc(66px + env(safe-area-inset-bottom));z-index:20;padding:10px 0;background:linear-gradient(transparent,var(--bg) 25%)}
+}
+@media (max-width:520px){
+  .hero-title{font-size:clamp(60px,18vw,86px)}.hero-date{font-size:25px}.hero-sub{font-size:11px}
+  h2{font-size:42px}.lead{font-size:16px}
+  .section{padding-top:78px;padding-bottom:78px}
+  .info-card,.feature-card,.stay-card,.arrival-card{padding:20px}
+  .party h2{font-size:46px}.party-tag{font-size:22px}.party-pills{gap:7px}.pill{font-size:12px;padding:11px 8px}
+  .step-title{font-size:31px}.progress{gap:8px}.progress-label{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}.hero-media{animation:none}.scroll-hint{animation:none}.reveal,.form-step,.conditional,.success-state{transition:none;animation:none}.reveal{opacity:1;transform:none}.option-body,.btn,.info-card,.feature-card,.stay-card,.arrival-card{transition:none}
+}
+</style>
+</head>
+<body>
+<header class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="brand" href="#start" aria-label="Zur Startseite">50.5</a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <button class="nav-link active" data-target="start">Start</button>
+      <button class="nav-link" data-target="location">Location</button>
+      <button class="nav-link" data-target="programm">Programm</button>
+      <button class="nav-link" data-target="rsvp">RSVP</button>
+    </nav>
+    <span class="nav-date">19.06.27 · Thusis</span>
+  </div>
+</header>
+
+<main>
+  <section id="start" class="hero" data-section="start">
+    <div class="hero-media" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Nachfeier meines 50. Geburtstags</div>
+      <h1 class="hero-title">50.5</h1>
+      <p class="hero-sub">Jahre · 19. Juni 2027 · Thusis</p>
+      <div class="hero-date">Jetzt wird nachgefeiert!</div>
+      <a class="btn hero-cta" href="#location">🥂 Zur Einladung</a>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Entdecken <span>↓</span></div>
+  </section>
+
+  <section class="section" data-section="start">
+    <div class="section-inner intro reveal">
+      <div class="eyebrow">01 · Start</div>
+      <h2>Jetzt wird<br>nachgefeiert!</h2>
+      <p class="lead">50 Jahre sind schliesslich ein guter Grund, noch einmal richtig anzustossen.</p>
+      <p class="lead">Deshalb möchte ich meine Geburtstagsfeier mit euch nachholen – und aus dem Anlass ein besonderes gemeinsames Wochenende machen.</p>
+      <div class="rule"></div>
+      <p style="font-family:var(--serif);font-size:25px;color:var(--gold2);line-height:1.15">Am 19. Juni 2027 treffen wir uns in Thusis.</p>
+      <p class="lead">Mit guten Freunden, feinem Essen, guten Drinks, Zeit zum Geniessen, <strong style="color:var(--text)">guter Musik und Tanzen wie früher.</strong></p>
+      <p style="font-family:var(--serif);font-size:25px;color:var(--text)">Ich freue mich sehr, wenn du dabei bist!</p>
+      <div class="info-grid">
+        <article class="info-card"><div class="card-kicker">Wann</div><div class="card-title">19. Juni 2027</div><p class="card-copy">Das Geburtstags-Wochenende</p></article>
+        <article class="info-card"><div class="card-kicker">Wo</div><div class="card-title">Thusis</div><p class="card-copy">Graubünden</p></article>
+        <article class="info-card"><div class="card-kicker">Was</div><div class="card-title">Die Nachfeier</div><p class="card-copy">50 Jahre – endlich nachgefeiert</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section closing" data-section="start">
+    <div class="section-inner reveal">
+      <div class="eyebrow">Einladung</div>
+      <h2>Ein Wochenende.<br>Ein besonderer Anlass.<br>Viele gute Gründe, dabei zu sein.</h2>
+      <p>Damit du weisst, was dich erwartet, findest du hier alle Informationen zur Location, zum Programm und zur Anreise.</p>
+      <p>Und natürlich möchte ich auch wissen, <strong style="color:var(--text)">wann du kommst, ob du übernachtest und was bei dir auf den Teller darf.</strong> 😉</p>
+      <a class="btn" href="#location">🥂 Zur Einladung</a>
+    </div>
+  </section>
+
+  <section id="location" class="section" data-section="location">
+    <div class="section-inner">
+      <div class="reveal"><div class="eyebrow">02 · Location</div><h2>Wir feiern<br>in Thusis</h2><p class="lead">Ein Wochenende zum Ankommen, Feiern und Geniessen.</p></div>
+      <img class="section-photo location-hero-photo reveal" src="assets/story.jpg" alt="Story Thusis und die Landschaft rund um Thusis" loading="lazy">
+      <div class="photo-caption reveal">Story Thusis · Graubünden</div>
+      <div class="reveal" style="margin-top:64px"><div class="eyebrow">Story Thusis</div><h2 style="font-size:42px">Ein Ort für unser gemeinsames Wochenende</h2><p class="lead">Für meine Geburtstags-Nachfeier habe ich einen Ort ausgesucht, an dem wir nicht einfach nur einen Abend verbringen, sondern gemeinsam ein ganzes Wochenende geniessen können.</p><p class="lead">Ein Ort zum Ankommen, Zusammensitzen, Essen, Trinken, Lachen – und natürlich zum Feiern.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card reveal"><div class="feature-icon">🏡</div><h3>Feiern</h3><p>Gemeinsam essen, anstossen, lachen und später das Tanzbein schwingen.</p></article>
+        <article class="feature-card reveal"><div class="feature-icon">🍽️</div><h3>Geniessen</h3><p>Gutes Essen, gute Drinks und vor allem: Zeit füreinander.</p></article>
+        <article class="feature-card reveal"><div class="feature-icon">🛏️</div><h3>Übernachten</h3><p>Nach der Feier einfach bleiben und am nächsten Morgen gemeinsam frühstücken.</p></article>
+      </div>
+      <div class="reveal" style="margin-top:110px"><div class="eyebrow">Anreise</div><h2 style="font-size:42px">Gut erreichbar</h2><p class="lead">Thusis liegt mitten in Graubünden und ist unkompliziert erreichbar.</p></div>
+      <div class="split">
+        <article class="arrival-card reveal"><div class="arrival-icon">🚗</div><h3>Mit dem Auto</h3><p>Direkte Anreise nach Thusis. Parkmöglichkeiten ergänzen wir hier mit den konkreten Angaben.</p><a class="text-link route" href="https://www.google.com/maps/search/?api=1&query=Story+Thusis" target="_blank" rel="noopener">Route anzeigen →</a></article>
+        <article class="arrival-card reveal"><div class="arrival-icon">🚆</div><h3>Mit dem Zug</h3><p>Entspannt anreisen und direkt ins Wochenende starten. Die genaue Verbindung kannst du nach deiner Abreiseplanung wählen.</p><a class="text-link route" href="https://www.google.com/maps/search/?api=1&query=Story+Thusis" target="_blank" rel="noopener">Route anzeigen →</a></article>
+      </div>
+      <div class="reveal" style="margin-top:110px"><div class="eyebrow">Übernachten</div><h2 style="font-size:42px">Bleib doch einfach<br>über Nacht.</h2><p class="lead">Damit wir möglichst viel gemeinsame Zeit haben, kannst du ganz entspannt in Thusis übernachten.</p></div>
+      <div class="stay-grid">
+        <article class="stay-card reveal"><div class="feature-icon">🛏️</div><h3>Story Thusis</h3><p><strong style="color:var(--text)">Zimmer</strong><br>Für alle, die es bequem und unkompliziert mögen.</p></article>
+        <article class="stay-card reveal"><div class="feature-icon">⛺</div><h3>Camping</h3><p><strong style="color:var(--text)">Stellplatz</strong><br>Für Zelt, Wohnwagen oder Camper.</p></article>
+        <article class="stay-card reveal"><div class="feature-icon">🏕️</div><h3>Camping</h3><p><strong style="color:var(--text)">Mietunterkunft</strong><br>Eine weitere Möglichkeit für die Übernachtung auf dem Campingplatz.</p></article>
+      </div>
+      <div class="notice reveal"><div class="notice-title">ℹ️ Zuerst Wunsch, dann Buchung</div><p>Im RSVP gibst du zunächst nur deinen Übernachtungswunsch an. Die konkrete Buchung erfolgt anschließend in einem zweiten Schritt.</p></div>
+      <div class="reveal" style="margin-top:22px;padding:23px;border:1px solid rgba(201,164,92,.2);border-radius:16px;background:var(--card)"><div class="card-kicker">Campingplatz</div><div class="card-title">TCS Camping Thusis Viamala</div><p class="card-copy" style="margin:8px 0 14px">Camping · Stellplätze · Mietunterkünfte</p><p class="card-copy">Wer lieber unter freiem Himmel übernachtet oder mit Camper bzw. Wohnwagen kommt, kann diese Möglichkeit wählen.</p><a class="text-link" href="https://www.tcs.ch/de/camping-reisen/camping-insider/campingplaetze/tcs-campingplaetze/campingplatz-thusis-viamala.php" target="_blank" rel="noopener">Campingplatz ansehen →</a></div>
+      <div class="closing reveal" style="padding-top:120px"><h2 style="font-size:48px">Ankommen.<br>Bleiben.<br>Gemeinsam feiern.</h2><a class="btn" href="#programm">🎉 Zum Programm</a></div>
+    </div>
+  </section>
+
+  <section id="programm" class="section" data-section="programm">
+    <div class="section-inner">
+      <div class="programme-intro reveal"><div class="eyebrow">03 · Programm</div><h2>Ein Wochenende<br>zum Nachfeiern</h2><p class="lead">Wer bereits am Freitag anreisen möchte, kann ganz entspannt in Thusis ankommen. Das offizielle Programm beginnt am Samstag.</p></div>
+      <div class="timeline">
+        <article class="event reveal"><div class="event-label">Freitag · optional</div><h3>Ankommen & Einstimmen</h3><p>Wer bereits am Freitag anreisen möchte, kann ganz entspannt ankommen, einchecken und den Abend individuell verbringen.</p><div class="mystery"><strong>ℹ️ Noch kein offizielles Programm</strong><span>Der Freitag ist als individuelle Anreise gedacht. Das gemeinsame Programm startet am Samstag.</span></div></article>
+        <article class="event reveal"><div class="event-label">Samstag · der Festtag</div><h3>Gemeinsam in den Tag starten</h3><p>Frühstück und entspanntes Ankommen mit denjenigen, die bereits am Freitag angereist sind.</p></article>
+        <article class="event reveal"><div class="event-label">Samstag</div><h3>Gemeinsam unterwegs</h3><p>Ein gemeinsamer Programmpunkt am Vormittag oder frühen Nachmittag – was genau, wird noch verraten.</p><div class="mystery"><strong>🥾 Was passiert hier?</strong><span>Wird noch verraten.</span></div></article>
+        <article class="event reveal"><div class="event-label">Samstag</div><h3>🥂 Einstimmen & Apéro</h3><p>Zeit zum Anstossen, Zusammensitzen, Erzählen und Einstimmen auf den Abend.</p></article>
+      </div>
+      <div class="party reveal">
+        <div class="party-copy"><div class="eyebrow">Der Höhepunkt</div><h2>Die grosse<br>Nachfeier</h2><div class="party-tag">50.5 Jahre – endlich nachgefeiert.</div><div class="party-pills"><div class="pill">🍽️ Essen</div><div class="pill">🥂 Drinks</div><div class="pill">🎵 Musik</div><div class="pill">💃 Tanzen</div></div></div>
+      </div>
+      <div class="open-end reveal"><div class="eyebrow">Samstag · später</div><h2>🌙 Open End</h2><p>Keine Eile, kein festes Ende. Einfach feiern, solange wir Lust haben.</p></div>
+      <div class="reveal" style="text-align:center;margin-bottom:34px"><div class="eyebrow">Sonntag</div><h2>Gemeinsam ausklingen</h2><p class="lead">Nach einer hoffentlich langen Nacht lassen wir das Wochenende gemütlich ausklingen.</p></div>
+      <div class="sunday-grid">
+        <article class="feature-card reveal"><div class="feature-icon">☕</div><h3>Frühstück</h3><p>Ausschlafen, Kaffee trinken und den Abend noch einmal Revue passieren lassen.</p></article>
+        <article class="feature-card reveal"><div class="feature-icon">💬</div><h3>Zeit für Gespräche</h3><p>Kein Programm-Marathon. Einfach noch ein bisschen gemeinsame Zeit.</p></article>
+        <article class="feature-card reveal"><div class="feature-icon">👋</div><h3>Heimreise</h3><p>Danach heisst es langsam Abschied nehmen.</p></article>
+      </div>
+      <div class="closing reveal" style="padding-top:110px"><h2 style="font-size:48px">Ankommen.<br>Feiern.<br>Tanzen.<br>Erinnerungen sammeln.</h2><p>Und das Beste daran? Wir haben noch gar nicht alles verraten. 😉</p><a class="btn" href="#rsvp">🥂 Zum RSVP</a></div>
+    </div>
+  </section>
+
+  <section id="rsvp" class="section" data-section="rsvp">
+    <div class="rsvp-shell">
+      <div class="rsvp-intro reveal"><div class="eyebrow">04 · RSVP · Deine Rückmeldung</div><h2>Bist du dabei?</h2><p>Ich freue mich sehr, wenn du mitfeierst! Mit ein paar kurzen Angaben kannst du mir helfen, das Wochenende zu planen.</p></div>
+      <div id="rsvpFormArea" class="reveal">
+        <div class="progress" aria-label="Fortschritt"><div class="progress-label" id="progressLabel">01 / 04 · DABEI</div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></div>
+        <form id="rsvpForm" novalidate data-email-endpoint="https://formsubmit.co/ajax/Rasiemon@icloud.com">
+          <input type="hidden" name="_subject" value="RSVP · 50.5 Jahre · 19.06.2027 · Thusis">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none!important">
+          <input type="hidden" name="form_context" value="Geburtstags-Nachfeier · 19. Juni 2027 · Thusis">
+          <div class="form-step active" data-step="1">
+            <div class="step-title">Kommst du zur Nachfeier?</div>
+            <div class="field"><div class="option-grid two">
+              <label class="option"><input type="radio" name="attendance" value="Ja, ich bin dabei" required><span class="option-body"><span class="option-main"><span class="option-icon">🥂</span><span><span class="option-title">Ja, sehr gerne!</span><span class="option-sub">Ich bin dabei.</span></span></span><span class="check">✓</span></span></label>
+              <label class="option"><input type="radio" name="attendance" value="Leider nein"><span class="option-body"><span class="option-main"><span class="option-icon">😢</span><span><span class="option-title">Leider nein</span><span class="option-sub">Diesmal kann ich nicht kommen.</span></span></span><span class="check">✓</span></span></label>
+            </div></div>
+            <div id="attendingFields" class="conditional">
+              <div class="field"><label class="field-label">Kommst du mit Begleitung?</label><div class="inline-choice">
+                <label class="option"><input type="radio" name="companion" value="Alleine"><span class="option-body">Alleine</span></label>
+                <label class="option"><input type="radio" name="companion" value="Mit Begleitung"><span class="option-body">Mit Begleitung</span></label>
+                <label class="option"><input type="radio" name="companion" value="Noch offen"><span class="option-body">Noch offen</span></label>
+              </div></div>
+              <div id="companionNameWrap" class="field conditional"><label class="field-label" for="companionName">Name der Begleitung</label><input class="text-input" id="companionName" name="companionName" placeholder="Vorname Nachname"></div>
+            </div>
+            <div class="field"><label class="field-label" for="name">Dein Name *</label><input class="text-input" id="name" name="name" autocomplete="name" placeholder="Vorname Nachname"></div>
+            <div class="field"><label class="field-label" for="email">E-Mail *</label><input class="text-input" id="email" name="email" type="email" autocomplete="email" placeholder="deine@email.ch"></div>
+            <div class="field"><label class="field-label" for="phone">Telefon <small>optional</small></label><input class="text-input" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+41 ..."></div>
+            <div class="step-actions"><span></span><button type="button" class="btn" data-next>Weiter →</button></div>
+          </div>
+
+          <div class="form-step" data-step="2">
+            <div class="step-title">Wie reist du an?</div>
+            <div class="field"><label class="field-label">Wann reist du voraussichtlich an?</label><div class="option-grid">
+              <label class="option"><input type="radio" name="arrivalDay" value="Freitag"><span class="option-body"><span class="option-main"><span class="option-icon">🌙</span><span><span class="option-title">Freitag</span><span class="option-sub">Individuelle Anreise</span></span></span><span class="check">✓</span></span></label>
+              <label class="option"><input type="radio" name="arrivalDay" value="Samstag"><span class="option-body"><span class="option-main"><span class="option-icon">☀️</span><span><span class="option-title">Samstag</span><span class="option-sub">Anreise zum offiziellen Programm</span></span></span><span class="check">✓</span></span></label>
+              <label class="option"><input type="radio" name="arrivalDay" value="Noch nicht sicher"><span class="option-body"><span class="option-main"><span class="option-icon">❓</span><span><span class="option-title">Noch nicht sicher</span></span></span><span class="check">✓</span></span></label>
+            </div></div>
+            <div class="field"><label class="field-label">Wie reist du voraussichtlich an?</label><div class="option-grid two">
+              <label class="option"><input type="radio" name="transport" value="Auto"><span class="option-body"><span class="option-main"><span class="option-icon">🚗</span><span class="option-title">Auto</span></span><span class="check">✓</span></span></label>
+              <label class="option"><input type="radio" name="transport" value="Zug"><span class="option-body"><span class="option-main"><span class="option-icon">🚆</span><span class="option-title">Zug</span></span><span class="check">✓</span></span></label>
+              <label class="option"><input type="radio" name="transport" value="Fahrgemeinschaft"><span class="option-body"><span class="option-main"><span class="option-icon">🚐</span><span class="option-title">Fahrgemeinschaft</span></span><span class="check">✓</span></span></label>
+              <label class="option"><input type="radio" name="transport" value="Sonstiges"><span class="option-body"><span class="option-main"><span class="option-icon">➜</span><span class="option-title">Sonstiges</span></span><span class="check">✓</span></span></label>
+            </div></div>
+            <div id="rideWrap" class="conditional"><div class="field"><label class="field-label">Hast du Platz für eine Mitfahrgelegenheit?</label><div class="inline-choice"><label class="option"><input type="radio" name="ride" value="Ja"><span class="option-body">Ja</span></label><label class="option"><input type="radio" name="ride" value="Nein"><span class="option-body">Nein</span></label></div></div></div>
+            <div class="step-actions"><button type="button" class="btn-secondary" data-prev>← Zurück</button><button type="button" class="btn" data-next>Weiter →</button></div>
+          </div>
+
+          <div class="form-step" data-step="3">
+            <div class="step-title">Möchtest du übernachten?</div>
+            <div class="field"><div class="inline-choice"><label class="option"><input type="radio" name="stay" value="Ja"><span class="option-body">Ja</span></label><label class="option"><input type="radio" name="stay" value="Nein"><span class="option-body">Nein</span></label><label class="option"><input type="radio" name="stay" value="Noch nicht sicher"><span class="option-body">Noch nicht sicher</span></label></div></div>
+            <div id="stayDetails" class="conditional">
+              <div class="field"><label class="field-label">Welche Variante bevorzugst du?</label><div class="option-grid">
+                <label class="option"><input type="radio" name="stayType" value="Zimmer im Story Thusis"><span class="option-body"><span class="option-main"><span class="option-icon">🛏️</span><span><span class="option-title">Story Thusis</span><span class="option-sub">Zimmer</span></span></span><span class="check">✓</span></span></label>
+                <label class="option"><input type="radio" name="stayType" value="Camping / Stellplatz"><span class="option-body"><span class="option-main"><span class="option-icon">⛺</span><span><span class="option-title">Camping</span><span class="option-sub">Stellplatz</span></span></span><span class="check">✓</span></span></label>
+                <label class="option"><input type="radio" name="stayType" value="Mietunterkunft auf dem Campingplatz"><span class="option-body"><span class="option-main"><span class="option-icon">🏕️</span><span><span class="option-title">Mietunterkunft</span><span class="option-sub">Auf dem Campingplatz</span></span></span><span class="check">✓</span></span></label>
+              </div></div>
+              <div class="field"><label class="field-label">Welche Nächte möchtest du voraussichtlich bleiben?</label><div class="option-grid two">
+                <label class="option"><input type="radio" name="nights" value="Freitag auf Samstag"><span class="option-body">Freitag → Samstag</span></label>
+                <label class="option"><input type="radio" name="nights" value="Samstag auf Sonntag"><span class="option-body">Samstag → Sonntag</span></label>
+                <label class="option"><input type="radio" name="nights" value="Beide Nächte"><span class="option-body">Beide Nächte</span></label>
+                <label class="option"><input type="radio" name="nights" value="Noch nicht sicher"><span class="option-body">Noch nicht sicher</span></label>
+              </div></div>
+            </div>
+            <div class="notice compact"><div class="notice-title">ℹ️ Noch keine Buchung</div><p>Mit deiner Antwort meldest du zunächst nur deinen Bedarf. Die konkrete Buchung erfolgt anschließend in einem zweiten Schritt.</p></div>
+            <div class="step-actions"><button type="button" class="btn-secondary" data-prev>← Zurück</button><button type="button" class="btn" data-next>Weiter →</button></div>
+          </div>
+
+          <div class="form-step" data-step="4">
+            <div class="step-title">Was darf bei dir auf den Teller?</div>
+            <div class="field"><label class="field-label">Gibt es beim Essen etwas zu beachten?</label><div class="option-grid">
+              <label class="option"><input type="radio" name="food" value="Keine besonderen Wünsche"><span class="option-body"><span class="option-main"><span class="option-icon">🍽️</span><span class="option-title">Keine besonderen Wünsche</span></span><span class="check">✓</span></span></label>
+              <label class="option"><input type="radio" name="food" value="Vegetarisch"><span class="option-body"><span class="option-main"><span class="option-icon">🌱</span><span class="option-title">Vegetarisch</span></span><span class="check">✓</span></span></label>
+              <label class="option"><input type="radio" name="food" value="Vegan"><span class="option-body"><span class="option-main"><span class="option-icon">🌿</span><span class="option-title">Vegan</span></span><span class="check">✓</span></span></label>
+              <label class="option"><input type="radio" name="food" value="Allergie / Unverträglichkeit"><span class="option-body"><span class="option-main"><span class="option-icon">⚠️</span><span class="option-title">Allergie / Unverträglichkeit</span></span><span class="check">✓</span></span></label>
+              <label class="option"><input type="radio" name="food" value="Sonstiges"><span class="option-body"><span class="option-main"><span class="option-icon">➕</span><span class="option-title">Sonstiges</span></span><span class="check">✓</span></span></label>
+            </div></div>
+            <div class="field"><label class="field-label" for="foodDetails">Details <small>optional</small></label><textarea class="textarea" id="foodDetails" name="foodDetails" placeholder="Allergien, Unverträglichkeiten oder andere Wünsche"></textarea></div>
+            <div class="field"><label class="field-label" for="message">Noch etwas?</label><textarea class="textarea" id="message" name="message" placeholder="Gibt es etwas, das du mir für das Wochenende mitteilen möchtest?"></textarea></div>
+            <div class="step-actions"><button type="button" class="btn-secondary" data-prev>← Zurück</button><button type="button" class="btn" id="reviewBtn">Angaben prüfen →</button></div>
+          </div>
+
+          <div class="form-step" data-step="5">
+            <div class="step-title">Deine Angaben</div>
+            <div class="notice compact" style="margin-bottom:22px"><div class="notice-title">Bitte kurz prüfen</div><p>Mit dem Absenden wird noch keine Übernachtung gebucht.</p></div>
+            <div class="summary" id="summary"></div>
+            <div class="step-actions"><button type="button" class="btn-secondary" data-prev>← Ändern</button><button type="submit" class="btn">🥂 RSVP absenden</button></div>
+          </div>
+        </form>
+        <div id="successState" class="success-state"><div class="success-icon">🥂</div><h2>Vielen Dank!</h2><p>Schön, dass du dabei bist. Ich freue mich darauf, mit dir 50.5 Jahre nachzufeiern.</p><div class="gold" style="font-family:var(--serif);font-size:27px">Bis in Thusis!</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>50.5 Jahre · Nachfeier meines 50. Geburtstags · 19. Juni 2027 · Thusis</footer>
+
+<nav class="mobile-nav" aria-label="Mobile Navigation"><div class="mobile-nav-inner">
+  <button class="mobile-link active" data-target="start"><span class="icon">⌂</span>Start</button>
+  <button class="mobile-link" data-target="location"><span class="icon">⌖</span>Location</button>
+  <button class="mobile-link" data-target="programm"><span class="icon">✦</span>Programm</button>
+  <button class="mobile-link" data-target="rsvp"><span class="icon">🥂</span>RSVP</button>
+</div></nav>
+
+<script>
+const nav=document.getElementById('siteNav');
+const sections=[...document.querySelectorAll('[data-section]')];
+const navButtons=[...document.querySelectorAll('[data-target]')];
+const setActive=(id)=>{navButtons.forEach(b=>b.classList.toggle('active',b.dataset.target===id))};
+navButtons.forEach(btn=>btn.addEventListener('click',()=>{document.getElementById(btn.dataset.target).scrollIntoView({behavior:'smooth',block:'start'});setActive(btn.dataset.target)}));
+const startObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting && e.intersectionRatio>.2){setActive(e.target.dataset.section)}})},{threshold:[.2,.5]});
+sections.forEach(s=>startObserver.observe(s));
+const hero=document.getElementById('start');
+const heroObserver=new IntersectionObserver(([e])=>{nav.classList.toggle('visible',!e.isIntersecting)},{threshold:.12});heroObserver.observe(hero);
+const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -40px'});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+/* RSVP state */
+const form=document.getElementById('rsvpForm');
+const steps=[...document.querySelectorAll('.form-step')];
+const progressLabel=document.getElementById('progressLabel');
+const progressFill=document.getElementById('progressFill');
+let currentStep=1;
+const stepNames={1:'DABEI',2:'ANREISE',3:'ÜBERNACHTEN',4:'ESSEN',5:'PRÜFEN'};
+function showStep(n){currentStep=n;steps.forEach(s=>s.classList.toggle('active',Number(s.dataset.step)===n));progressLabel.textContent=`0${n} / 04 · ${stepNames[n]}`;progressFill.style.width=`${n===5?100:n*25}%`;document.getElementById('rsvp').scrollIntoView({behavior:'smooth',block:'start'});}
+function selected(name){return form.querySelector(`input[name="${name}"]:checked`)?.value||''}
+function validateStep(n){
+  if(n===1){
+    const attendance=selected('attendance');
+    if(!attendance){alert('Bitte wähle zuerst aus, ob du dabei bist.');return false}
+    const name=form.name.value.trim(),email=form.email.value.trim();
+    if(!name){form.name.focus();alert('Bitte gib deinen Namen an.');return false}
+    if(!email || !form.email.checkValidity()){form.email.focus();alert('Bitte gib eine gültige E-Mail-Adresse an.');return false}
+  }
+  if(n===2 && !selected('arrivalDay')){alert('Bitte wähle aus, wann du voraussichtlich anreist.');return false}
+  if(n===2 && !selected('transport')){alert('Bitte wähle deine voraussichtliche Anreise.');return false}
+  if(n===3 && !selected('stay')){alert('Bitte wähle aus, ob du übernachten möchtest.');return false}
+  if(n===3 && selected('stay')==='Ja' && !selected('stayType')){alert('Bitte wähle deine bevorzugte Übernachtungsvariante.');return false}
+  if(n===3 && selected('stay')==='Ja' && !selected('nights')){alert('Bitte wähle die gewünschten Nächte.');return false}
+  if(n===4 && !selected('food')){alert('Bitte wähle deinen Essenswunsch.');return false}
+  return true;
+}
+
+document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('click',()=>{
+  if(!validateStep(currentStep)) return;
+  if(currentStep===1 && selected('attendance')==='Leider nein'){
+    renderSummary();
+    showStep(5);
+    return;
+  }
+  showStep(currentStep+1);
+}));
+document.querySelectorAll('[data-prev]').forEach(btn=>btn.addEventListener('click',()=>showStep(currentStep-1)));
+
+document.querySelectorAll('input[name="attendance"]').forEach(i=>i.addEventListener('change',()=>{
+  const yes=i.value==='Ja, ich bin dabei' && i.checked;
+  document.getElementById('attendingFields').classList.toggle('show',yes);
+}));
+document.querySelectorAll('input[name="companion"]').forEach(i=>i.addEventListener('change',()=>document.getElementById('companionNameWrap').classList.toggle('show',i.checked&&i.value==='Mit Begleitung')));
+document.querySelectorAll('input[name="transport"]').forEach(i=>i.addEventListener('change',()=>document.getElementById('rideWrap').classList.toggle('show',i.checked&&i.value==='Auto')));
+document.querySelectorAll('input[name="stay"]').forEach(i=>i.addEventListener('change',()=>document.getElementById('stayDetails').classList.toggle('show',i.checked&&i.value!=='Nein')));
+
+function renderSummary(){
+  const rows=[
+    ['Teilnahme',selected('attendance')],['Name',form.name.value||'—'],['Begleitung',selected('companion')||'—'],['Name der Begleitung',form.companionName.value||'—'],['E-Mail',form.email.value||'—'],['Telefon',form.phone.value||'—'],['Anreise',`${selected('arrivalDay')||'—'} · ${selected('transport')||'—'}`],['Mitfahrgelegenheit',selected('ride')||'—'],['Übernachtung',selected('stay')||'—'],['Variante',selected('stayType')||'—'],['Nächte',selected('nights')||'—'],['Essen',selected('food')||'—'],['Details',form.foodDetails.value||'—'],['Nachricht',form.message.value||'—']
+  ];
+  document.getElementById('summary').innerHTML=rows.map(([l,v])=>`<div class="summary-row"><span class="summary-label">${escapeHtml(l)}</span><span class="summary-value">${escapeHtml(v)}</span></div>`).join('');
+}
+
+document.getElementById('reviewBtn').addEventListener('click',()=>{if(!validateStep(4))return;renderSummary();showStep(5)});
+
+const submitButton=form.querySelector('button[type="submit"]');
+let submitStatus=document.getElementById('submitStatus');
+if(!submitStatus){
+  submitStatus=document.createElement('div');
+  submitStatus.id='submitStatus';
+  submitStatus.className='submit-status';
+  submitStatus.setAttribute('role','status');
+  submitStatus.setAttribute('aria-live','polite');
+  submitStatus.hidden=true;
+  submitButton.parentElement.before(submitStatus);
+}
+
+function buildSubmissionData(){
+  const data={
+    name:form.name.value.trim()||'—',
+    email:form.email.value.trim()||'—',
+    _replyto:form.email.value.trim()||'',
+    phone:form.phone.value.trim()||'—',
+    attendance:selected('attendance')||'—',
+    companion:selected('companion')||'—',
+    companionName:form.companionName.value.trim()||'—',
+    arrivalDay:selected('arrivalDay')||'—',
+    transport:selected('transport')||'—',
+    ride:selected('ride')||'—',
+    stay:selected('stay')||'—',
+    stayType:selected('stayType')||'—',
+    nights:selected('nights')||'—',
+    food:selected('food')||'—',
+    foodDetails:form.foodDetails.value.trim()||'—',
+    message:form.message.value.trim()||'—',
+    _subject:'RSVP · 50.5 Jahre · 19.06.2027 · Thusis · '+(form.name.value.trim()||'Gast'),
+    _template:'table',
+    form_context:'Geburtstags-Nachfeier · 19. Juni 2027 · Thusis'
+  };
+  return data;
+}
+
+function setSubmitStatus(message,type='info'){
+  submitStatus.textContent=message;
+  submitStatus.className=`submit-status ${type}`;
+  submitStatus.hidden=false;
+}
+
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(form._honey.value) return;
+  submitButton.disabled=true;
+  submitButton.textContent='Wird gesendet …';
+  setSubmitStatus('Deine Rückmeldung wird gerade übermittelt …','info');
+  try{
+    const response=await fetch(form.dataset.emailEndpoint,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(buildSubmissionData())
+    });
+    const result=await response.json().catch(()=>({success:response.ok}));
+    if(!response.ok || result.success===false) throw new Error(result.message||'Die Rückmeldung konnte nicht übermittelt werden.');
+    form.style.display='none';
+    document.getElementById('progressLabel').parentElement.style.display='none';
+    submitStatus.hidden=true;
+    const successState=document.getElementById('successState');
+    const successText=successState.querySelector('p');
+    const successHeading=successState.querySelector('h2');
+    if(selected('attendance')==='Leider nein'){
+      successHeading.textContent='Vielen Dank!';
+      successText.textContent='Danke für deine Rückmeldung. Schade, dass du diesmal nicht dabei sein kannst.';
+    }else{
+      successHeading.textContent='Vielen Dank!';
+      successText.textContent='Schön, dass du dabei bist. Ich freue mich darauf, mit dir 50.5 Jahre nachzufeiern.';
+    }
+    successState.classList.add('show');
+    window.scrollTo({top:document.getElementById('rsvp').offsetTop,behavior:'smooth'});
+  }catch(err){
+    console.error(err);
+    setSubmitStatus('Die Rückmeldung konnte gerade nicht gesendet werden. Bitte prüfe deine Internetverbindung und versuche es noch einmal.','error');
+    submitButton.disabled=false;
+    submitButton.textContent='🥂 RSVP absenden';
+  }
+});
+function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+</script>
+</body>
+</html>
