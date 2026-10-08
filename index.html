@@ -56,7 +56,7 @@ p{margin:0 0 18px}.lead{font-size:18px;line-height:1.7;color:var(--muted)}
 
 /* Hero */
 .hero{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden;background:#0d0d0d}
-.hero-media{position:absolute;inset:0;background-image:linear-gradient(to bottom,rgba(13,13,13,.10) 0%,rgba(13,13,13,.05) 38%,rgba(13,13,13,.38) 74%,rgba(13,13,13,.72) 100%),url('assets/hero.jpg');background-size:cover;background-position:center 34%;transform:scale(1.025);animation:heroZoom 10s ease-out both}
+.hero-media{position:absolute;inset:0;background-image:url('assets/hero.jpg');background-size:cover;background-position:center 34%;transform:scale(1.025);filter:brightness(1.25) saturate(1.05);animation:heroZoom 10s ease-out both}
 .hero::after{content:"";position:absolute;inset:18px;border:1px solid rgba(216,188,122,.7);pointer-events:none;z-index:1}
 .hero-content{position:absolute;z-index:2;left:0;right:0;bottom:115px;width:100%;text-align:center;padding:0 20px;animation:fadeUp .9s .2s both}
 .hero-title{font-size:clamp(64px,15vw,110px);margin:18px 0 4px;text-shadow:0 8px 32px rgba(0,0,0,.45)}
